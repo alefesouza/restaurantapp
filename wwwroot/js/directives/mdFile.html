@@ -1,0 +1,14 @@
+﻿<p>{{ label }}</p>
+<table>
+    <tr>
+        <td>
+            <input type="file" name="{{ name }}" ng-hide="true" ng-file-model="file" accept="{{ accept }}">
+            <md-button class="md-raised" ng-click="chooseFile()">Escolher arquivo</md-button>
+        </td>
+        <td>
+            <md-input-container>
+                <input type="text" disabled="disabled">
+            </md-input-container>
+        </td>
+    </tr>
+</table>

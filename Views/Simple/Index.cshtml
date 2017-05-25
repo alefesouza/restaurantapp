@@ -1,0 +1,51 @@
+﻿<md-card class="main">
+    <md-card-title>
+        <md-card-title-text>
+            <h1>Bem-vindo ao RestaurantApp!</h1>
+        </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content>
+        <div>
+            <p>Com esse sistema totalmente gratuito, você pode gerenciar pedidos do seu restaurante de uma maneira muito mais fácil.</p>
+            <p>Você apenas precisa deixar iniciar o programa (como você fez agora), conectar a uma rede wi-fi (preferencialmente com senha) e deixar o celular dos funcionários conectado na mesma rede, abrindo o endereço IP deste computador no celular deles, basta apenas estar conectado a rede wi-fi, não sendo necessário ter internet no local.</p>
+            <p>Após isso, ele poderá escolher as opções:</p>
+            <ul>
+                <li>Atendente - Pode adicionar e modificar pedidos.</li>
+                <li>Cozinheiro - Vê o próximo pedido, prepara a comida e marca como pronto.</li>
+                <li>Caixa - Vê o total do pedido na hora de cobrar, e marca o pedido como finalizado.</li>
+            </ul>
+            <p>Você pode cadastrar produtos e categorias no menu ao lado, por motivos de segurança, você só pode fazer isso nesse computador.</p>
+        </div>
+
+        <form name="restaurantForm" ng-if="restaurant.name = ''">
+            <p>Antes de começar, preecha essas configurações:</p>
+
+            <md-input-container class="md-block">
+                <label>Nome do restaurante:</label>
+                <input md-maxlength="30" required name="name" ng-model="restaurant.name">
+                <div ng-messages="restaurantForm.name.$error">
+                    <div ng-message="required">Preecha esse campo.</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label>Quantidade de mesas:</label>
+                <input type="number" maxlength="3" ng-maxlength="3" required name="tables" ng-model="restaurant.tables">
+                <div ng-messages="restaurantForm.tables.$error">
+                    <div ng-message="required">Preecha esse campo.</div>
+                </div>
+            </md-input-container>
+
+            <md-file label="Logo do restaurante (opcional)" name="logo" accept="image/png, image/jpg" change="file_change"></md-file>
+
+            <md-button class="md-raised" ng-click="sendForm()" type="submit">Iniciar</md-button>
+        </form>
+
+        @*<p>Iniciar como:</p>
+
+        <md-button ng-click="open('waiter')">Atendente</md-button>
+        <md-button ng-click="open('cooker')">Cozinheiro</md-button>
+        <md-button ng-click="open('')">Caixa</md-button>*@
+</md-card-content>
+</md-card>

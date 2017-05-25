@@ -1,0 +1,13 @@
+{
+  "name": "RestaurantApp",
+  "private": true,
+  "dependencies": {
+    "jquery": "3.1.1",
+    "angular-material": "1.1.3",
+    "angular-route": "1.6.2",
+    "ng-file-model":  "*"
+  },
+  "resolutions": {
+    "jquery": "3.1.1"
+  }
+}

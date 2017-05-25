@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html ng-app="RestaurantApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title ng-bind="title + ' - RestaurantApp'">RestaurantApp</title>
+    <base href="/">
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/angular-material/angular-material.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/lib/angular-material/angular-material.min.css" />
+    </environment>
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+</head>
+<body class="docs-body" layout="row" ng-cloak>
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2"
+                md-component-id="left-drawer" hide-print
+                md-is-locked-open="$mdMedia('gt-sm')">
+
+        <md-content flex role="navigation">
+            <a id="logo" ng-href="/">
+                <img ng-if="logo != ''" ng-src="/img/logo/{{ logo }}" alt="Logo do restaurante" />
+                <h1 class="docs-logotype md-heading">RestaurantApp</h1>
+            </a>
+
+            <ul>
+                <li ng-repeat="item in drawer.items">
+                    <item-header ng-if="item.type == 'header'" name="{{ item.name }}"></item-header>
+
+                    <item-link ng-if="item.type == 'link'" name="{{ item.name }}" icon="{{ item.icon }}" link="{{ item.link }}" ng-class="route == item.link ? 'selected' : ''"></item-link>
+                </li>
+            </ul>
+        </md-content>
+    </md-sidenav>
+
+    <div layout="column" tabIndex="-1" role="main" flex>
+
+        <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar">
+            <div class="md-toolbar-tools docs-toolbar-tools" tabIndex="-1">
+                <div layout="row" flex class="fill-height">
+                    <md-button ng-click="toggleDrawer()" id="drawer-toggle" class="md-icon-button" aria-label="Abrir menu lateral">
+                        <md-icon aria-label="Abrir menu lateral" class="material-icons">menu</md-icon>
+                    </md-button>
+
+                    <h2 class="md-toolbar-item md-breadcrumb md-headline">
+                        {{ title }}
+                    </h2>
+
+                    <span flex></span>
+                </div>
+            </div>
+        </md-toolbar>
+
+        <md-content md-scroll-y layout="column" flex>
+            <div ng-view id="angular-view"></div>
+        </md-content>
+
+    </div>
+
+    <environment names="Development">
+        <!-- jQuery -->
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+
+        <!-- Angular.js Libraries -->
+        <script src="~/lib/angular/angular.js"></script>
+        <script src="~/lib/angular-route/angular-route.js"></script>
+        <script src="~/lib/angular-animate/angular-animate.js"></script>
+        <script src="~/lib/angular-aria/angular-aria.js"></script>
+        <script src="~/lib/angular-messages/angular-messages.js"></script>
+
+        <!-- Angular Material Library -->
+        <script src="~/lib/angular-material/angular-material.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <!-- jQuery -->
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+        <!-- Angular.js Libraries -->
+        <script src="~/lib/angular/angular.min.js"></script>
+        <script src="~/lib/angular-route/angular-route.min.js"></script>
+        <script src="~/lib/angular-animate/angular-animate.min.js"></script>
+        <script src="~/lib/angular-aria/angular-aria.min.js"></script>
+        <script src="~/lib/angular-messages/angular-messages.min.js"></script>
+
+        <!-- Angular Material Library -->
+        <script src="~/lib/angular-material/angular-material.min.js"></script>
+    </environment>
+
+    <!-- Modules -->
+    <script type="text/javascript" src="~/lib/ng-file-model/ng-file-model.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/app.js" asp-append-version="true"></script>
+    
+    <!-- Controllers -->
+    <script type="text/javascript" src="~/js/controllers/IndexController.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/controllers/AdminController.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/controllers/ProductsController.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/controllers/WaiterController.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/controllers/CookerController.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/controllers/CashierController.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/controllers/AboutController.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/controllers/SettingsController.js" asp-append-version="true"></script>
+
+    <!-- Directives -->
+    <script type="text/javascript" src="~/js/directives/mdFile.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/directives/itemHeader.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/directives/itemLink.js" asp-append-version="true"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
